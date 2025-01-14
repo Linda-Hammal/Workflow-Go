@@ -6,14 +6,11 @@ WORKDIR /app
 # Copier les fichiers nécessaires pour construire l'application
 COPY . .
 
-# Construire l'exécutable Go
-RUN go build -o cowsay main.go
+# Définir CGO_ENABLED=0 pour compiler un binaire statique Go
+RUN CGO_ENABLED=0 go build -o cowsay main.go
 
-# Utiliser une image légère pour exécuter l'application
+# Utiliser une image alpine légère pour exécuter l'application
 FROM alpine:latest
-
-# Installer les dépendances nécessaires (si besoin)
-RUN apk add --no-cache libc6-compat
 
 # Copier l'exécutable depuis l'étape de construction
 COPY --from=builder /app/cowsay .
