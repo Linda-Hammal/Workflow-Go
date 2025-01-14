@@ -22,7 +22,10 @@ jobs:
 
       - name: Build the Go executable
         run: go build -o cowsay main.go
-
+        
+      - name: Set up Docker Buildx with docker-container driver
+        run: |
+          docker buildx create --use --driver docker-container
       
 
       - name: Log in to Docker Hub
