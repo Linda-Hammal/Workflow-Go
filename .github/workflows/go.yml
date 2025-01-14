@@ -37,3 +37,4 @@ jobs:
             context: .
             push: true
             tags: ${{ secrets.DOCKER_USERNAME }}/cowsay:latest
+            platforms: linux/amd64,linux/arm64
