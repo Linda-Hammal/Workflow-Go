@@ -1,6 +1,6 @@
 module cowsay
 
-go 1.23
+go 1.23.1
 
 require (
 	github.com/Code-Hex/Neo-cowsay/v2 v2.0.4 // indirect
